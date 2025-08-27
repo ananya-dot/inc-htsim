@@ -5,3 +5,6 @@
 *#
 *.o
 .DS_store
+logout.dat
+/sim/datacenter/htsim_*
+/sim/tests/htsim_*

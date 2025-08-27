@@ -90,6 +90,7 @@ int main(int argc, char **argv) {
         //tcpSrc = new TcpSrcTransfer(NULL,NULL,eventlist,90000,NULL,NULL);
 
         tcpSrc->setName("TCP"+ntoa(i)); logfile.writeName(*tcpSrc);
+        tcpSrc->set_flowsize(1000000);
         tcpSnk = new TcpSink();
         //tcpSnk = new TcpSinkTransfer();
         tcpSnk->setName("TCPSink"+ntoa(i)); logfile.writeName(*tcpSnk);
