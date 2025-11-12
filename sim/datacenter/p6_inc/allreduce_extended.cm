@@ -1,0 +1,58 @@
+Nodes 8
+Connections 58
+Triggers 50
+3->4 id 1 start 0 size 1000000 send_done_trigger 1
+4->6 id 2 trigger 1 size 1000000 send_done_trigger 2
+6->7 id 3 trigger 2 size 1000000
+4->6 id 4 start 0 size 1000000 send_done_trigger 3
+6->7 id 5 trigger 3 size 1000000 send_done_trigger 4
+7->3 id 6 trigger 4 size 1000000
+6->7 id 7 start 0 size 1000000 send_done_trigger 5
+7->3 id 8 trigger 5 size 1000000 send_done_trigger 6
+3->4 id 9 trigger 6 size 1000000
+7->3 id 10 start 0 size 1000000 send_done_trigger 7
+3->4 id 11 trigger 7 size 1000000 send_done_trigger 8
+4->6 id 12 trigger 8 size 1000000
+0->1 id 13 start 0 size 1000000 send_done_trigger 9
+1->2 id 14 trigger 9 size 1000000 send_done_trigger 10
+2->5 id 15 trigger 10 size 1000000
+1->2 id 16 start 0 size 1000000 send_done_trigger 11
+2->5 id 17 trigger 11 size 1000000 send_done_trigger 12
+5->0 id 18 trigger 12 size 1000000
+2->5 id 19 start 0 size 1000000 send_done_trigger 13
+5->0 id 20 trigger 13 size 1000000 send_done_trigger 14
+0->1 id 21 trigger 14 size 1000000
+5->0 id 22 start 0 size 1000000 send_done_trigger 15
+0->1 id 23 trigger 15 size 1000000 send_done_trigger 16
+1->2 id 24 trigger 16 size 1000000
+3->2 id 25 trigger 8 size 100000 send_done_trigger 18
+2->3 id 26 trigger 16 size 100000 send_done_trigger 19
+3->4 id 27 trigger 18 size 1000000 send_done_trigger 20
+4->6 id 28 trigger 20 size 1000000 send_done_trigger 21
+6->7 id 29 trigger 21 size 1000000
+2->5 id 30 trigger 19 size 1000000 send_done_trigger 22
+5->0 id 31 trigger 22 size 1000000 send_done_trigger 23
+0->1 id 32 trigger 23 size 1000000
+trigger id 1 oneshot
+trigger id 2 oneshot
+trigger id 3 oneshot
+trigger id 4 oneshot
+trigger id 5 oneshot
+trigger id 6 oneshot
+trigger id 7 oneshot
+trigger id 8 oneshot
+trigger id 9 oneshot
+trigger id 10 oneshot
+trigger id 11 oneshot
+trigger id 12 oneshot
+trigger id 13 oneshot
+trigger id 14 oneshot
+trigger id 15 oneshot
+trigger id 16 oneshot
+trigger id 17 oneshot
+trigger id 18 oneshot
+trigger id 19 oneshot
+trigger id 20 oneshot
+trigger id 21 oneshot
+trigger id 22 oneshot
+trigger id 23 oneshot
