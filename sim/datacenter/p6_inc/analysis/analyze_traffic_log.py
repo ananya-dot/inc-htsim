@@ -596,9 +596,9 @@ def main():
     # Perform analysis
     analyzer.analyze_events()
     
-    # Generate plots
-    if not args.no_plots:
-        analyzer.generate_plots(args.output)
+    # # Generate plots
+    # if not args.no_plots:
+    #     analyzer.generate_plots(args.output)
     
     # Export summary
     if args.summary or args.all_exports:

@@ -6,7 +6,7 @@ Generate a hierarchical multi-ring allreduce traffic matrix with:
 3. Intra-ring broadcast (propagation)
 
 Usage:
-  python gen_allreduce_multiring.py <filename> <nodes> <conns> <groupsize> <flowsize> <locality> <randseed>
+  python gen_allreduce_extended.py <filename> <nodes> <conns> <groupsize> <flowsize> <locality> <randseed>
 """
 
 import sys
