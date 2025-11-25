@@ -39,8 +39,6 @@ shuffle(srcs)
 groups = conns // groupsize
 print(f"Groups: {groups}")
 print("Nodes", nodes, file=f)
-print("Connections", conns * (2 * groupsize - 1) + groups, file=f)
-print("Triggers", conns * (2 * groupsize - 2) + groups, file=f)
 
 id = 0
 trig_id = 1
@@ -49,6 +47,7 @@ group_end_triggers = []
 # -----------------------------
 # Phase 1: Intra-ring reduction
 # -----------------------------
+connections = 0
 for group in range(groups):
     groupsrcs = [srcs[group * groupsize + n] for n in range(groupsize)]
     if locality == 1:
@@ -70,6 +69,7 @@ for group in range(groups):
             if d != groupsize - 1:
                 out += f" send_done_trigger {trig_id}"
             print(out, file=f)
+            connections += 1
     group_end_triggers.append(trig_id - 1)
 
 # --------------------------------------
@@ -85,7 +85,7 @@ for g in range(groups):
     out += f" send_done_trigger {trig_id}"
     print(out, file=f)
     leader_triggers.append(trig_id)
-
+    connections += 1
 # ------------------------------------------------------
 # Phase 3: Intra-ring broadcast (propagation of gradients)
 # ------------------------------------------------------
@@ -102,13 +102,31 @@ for g in range(groups):
             trig_id += 1
             out += f" send_done_trigger {trig_id}"
             leader_done_trigger = trig_id
+        connections += 1
         print(out, file=f)
+        
 
 # -----------------------
 # Global trigger section
 # -----------------------
+trigger_count = 0
 for t in range(1, trig_id + 1):
     print(f"trigger id {t} oneshot", file=f)
+    trigger_count += 1
 
 f.close()
+
+# write the number of connections on the second line of the file
+insert_line = f"Connections {connections}\nTriggers {trigger_count}\n"
+with open(filename, "r") as f:
+    lines = f.readlines()
+
+# Insert at index 1 (0-based indexing)
+lines.insert(1, insert_line)
+
+with open(filename, "w") as f:
+    f.writelines(lines)
+
+
+print(f"Calculated Connections: {connections}")
 print(f"\nHierarchical multi-ring allreduce written to {filename}")
