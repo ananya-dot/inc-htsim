@@ -36,7 +36,7 @@ class TrafficLogAnalyzer:
         print("Parsing traffic log file...")
         
         # Check if parse_output tool exists
-        parse_tool = "../../parse_output"
+        parse_tool = "../../../parse_output"
         if not os.path.exists(parse_tool):
             print(f"Error: parse_output tool not found at {parse_tool}")
             return False
